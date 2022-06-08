@@ -6,7 +6,7 @@
 
 我们将讨论 OOP 的主要概念，为什么以及什么时候它有用，我会给你很多使用 JS 代码的例子。
 
-如果你不熟悉编程范式，我建议你在深入研究之前先看看[简短介绍](https://www.freecodecamp.org/news/an-introduction-to-programming-paradigms/)或者[廖雪峰Javascript教程](https://www.liaoxuefeng.com/)
+如果你不熟悉编程范式，我建议你在深入研究之前先看看[廖雪峰Javascript教程](https://www.liaoxuefeng.com/)
 
 # Intro to Object-Oriented Programming
 
