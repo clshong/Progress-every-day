@@ -1,0 +1,4 @@
+// 添加购物车
+export const PUSH_PRODUCT_TO_CART = "PUSH_PRODUCT_TO_CART";
+// 增加商品数量
+export const INCREMENT_ITEM_QUANTITY = "INCREMENT_ITEM_QUANTITY";
