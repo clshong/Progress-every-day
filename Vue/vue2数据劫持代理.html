@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue2数据劫持代理底层核心思想</title>
+</head>
+
+<body>
+  <script>
+    // 定义数据
+    let data = {
+      userName: 'charles',
+      userAge: 23,
+    }
+    // 模拟组件实例
+    let _this = {
+
+    }
+
+    // 利用 Object.defineProperty()
+    for (let item in data) {
+      console.log(item, data[item]);
+      Object.defineProperty(_this, item, {
+    // get 用来获取扩展属性值，当获取属性值时候调用get方法
+      get(){
+        console.log('get()')
+        return data[item]
+      },
+    // set 监事扩展属性 只要已修改就会去调用
+      set(newValue){
+        console.log(newValue);
+        // _this.userName = 'goddits' //千万不能在set方法中修改当前扩展的属性值，会出现死循环
+        // 整体思路：当我们去修改 _this属性时候调用 set 一旦调用set我用拿最新的newValue赋值给到 data数据 把data对应的值进行修改
+        data[item] = newValue
+      }
+      })
+    }
+    console.log(_this);
+    // 通过Object。defineProperty 的get 方法添加的扩展属性不能直接对对象属性进行修改
+    _this.userName = 'goddits'
+    _this.userAge = 18
+    console.log(_this.userName,_this.userAge);
+
+    // 总结：如果对象数据出现值是点点点的 采用的就是 Object.defineProperty 
+  </script>
+</body>
+
+</html>
